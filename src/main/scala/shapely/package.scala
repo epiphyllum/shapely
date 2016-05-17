@@ -10,10 +10,6 @@ package object shapely {
 
     def remove[A](implicit R: Remover[A, L]): R.Out =
       R(self)
-
-    def map[P <: Poly](p: P)(implicit M: Mapper[L, P]): M.Out = M(self)
-
-    def nth(n: Nat)(implicit N: Nther[L, n.N): N.Out = N(self)
   }
 }
 
