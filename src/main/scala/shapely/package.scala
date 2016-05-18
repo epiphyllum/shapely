@@ -4,6 +4,9 @@ package object shapely {
   type HNil = HNil0.type
   val HNil = HNil0
 
+  type Zero = Zero0.type
+  val Zero = Zero0
+
   implicit class HListSyntax[L <: HList](val self: L) extends AnyVal {
 
     def ::[H](head: H): H :: L = HCons(head, self)
