@@ -1,5 +1,5 @@
-package shapely
 
+package shapely
 import scala.language.experimental.macros
 
 import scala.reflect.macros.whitebox
@@ -12,7 +12,7 @@ final case class Succ[N <: Nat](n: N) extends Nat
 
 object Nat {
 
-  def fromInt(i: Int): Nat = macro NatMacros.materialize
+  implicit def fromInt(i: Int): Nat = macro NatMacros.materialize
 
   def toInt[N <: Nat](implicit N: ToInt[N]): Int = N.value
 }
