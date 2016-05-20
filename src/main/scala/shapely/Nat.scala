@@ -1,3 +1,9 @@
+package shapely
+
+import scala.language.experimental.macros
+
+import scala.reflect.macros.whitebox
+
 sealed trait Nat
 
 case object Zero0 extends Nat
