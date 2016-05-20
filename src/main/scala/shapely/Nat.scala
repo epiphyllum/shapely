@@ -4,11 +4,10 @@ import scala.language.experimental.macros
 
 import scala.reflect.macros.whitebox
 
-sealed trait Nat
-
-case object Zero0 extends Nat
-
-final case class Succ[N <: Nat](n: N) extends Nat
+trait Nat {
+  // the specific type of the nat e.g. Succ[Succ[Zero]]
+  type N <: Nat
+}
 
 object Nat {
 
@@ -33,4 +32,12 @@ class NatMacros(val c: whitebox.Context) {
         c.abort(c.enclosingPosition, "not a natural number")
     }
   }
+}
+
+object Zero0 extends Nat {
+  type N = Zero0.type
+}
+
+case class Succ[N0 <: Nat](n: N0) extends Nat {
+  type N = Succ[N0]
 }
